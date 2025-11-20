@@ -19,7 +19,7 @@ A beautiful, responsive anime streaming website built with Next.js that aggregat
 
 ## 🚀 Live Demo
 
-[View Live Site](https://yourusername.github.io/free-anime) *(Update with your GitHub Pages URL)*
+[View Live Site](https://shivananand.github.io/free-anime/) *(Update with your GitHub Pages URL)*
 
 ## 📋 Table of Contents
 
@@ -108,128 +108,6 @@ free-anime/
 ├── tailwind.config.js         # Tailwind configuration
 └── package.json
 ```
-
-## 🌐 Deployment to GitHub Pages
-
-### Step 1: Create GitHub Repository
-
-1. Go to [GitHub.com](https://github.com) and create a new repository
-2. Name it `free-anime` (or your preferred name)
-3. Don't initialize with README, .gitignore, or license
-
-### Step 2: Upload Your Code
-
-```bash
-# Initialize git (if not already done)
-git init
-
-# Add all files
-git add .
-
-# Commit changes
-git commit -m "Initial commit: FreeAnime streaming website"
-
-# Add remote repository
-git remote add origin https://github.com/yourusername/free-anime.git
-
-# Push to main branch
-git push -u origin main
-```
-
-### Step 3: Enable GitHub Pages
-
-1. Go to your repository on GitHub
-2. Click **Settings** tab
-3. Scroll down to **Pages** section
-4. Under **Source**, select **GitHub Actions**
-
-### Step 4: Create GitHub Actions Workflow
-
-Create a new file: `.github/workflows/deploy.yml`
-
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./out
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
-
-### Step 5: Deploy
-
-1. Commit and push the workflow file:
-   ```bash
-   git add .github/workflows/deploy.yml
-   git commit -m "Add GitHub Pages deployment workflow"
-   git push
-   ```
-
-2. Go to **Actions** tab in your repository
-3. Click on the workflow run
-4. Wait for deployment to complete
-5. Your site will be live at: `https://yourusername.github.io/free-anime/`
-
-## 🎨 Customization
-
-### Change Hero Image
-
-Edit `src/app/page.js` and replace the `HERO_IMAGE_URL`:
-
-```javascript
-const HERO_IMAGE_URL = 'https://your-image-url-here.jpg';
-```
-
-### Update Colors
-
-Modify the color scheme in `tailwind.config.js` or directly in components using Tailwind classes.
 
 ### Add More Anime Data
 
